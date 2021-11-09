@@ -137,7 +137,7 @@ public class EmployeeService extends ServiceBase{
         }
         
         boolean validatePass = false;
-        if(ev.getPassword() != null && ev.getPassword().equals("")) {
+        if(ev.getPassword() != null && !ev.getPassword().equals("")) {
             //パスワードの入力がある場合
             
             //パスワードについてのバリデーションを行う
