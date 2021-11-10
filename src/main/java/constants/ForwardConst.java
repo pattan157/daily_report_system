@@ -8,7 +8,7 @@ public enum ForwardConst {
     ACT("action"),
     ACT_TOP("Top"),
     ACT_EMP("Employee"),
-    ACT_REP("report"),
+    ACT_REP("Report"),
     ACT_AUTH("Auth"),
     
     //command
@@ -33,10 +33,10 @@ public enum ForwardConst {
     FW_EMP_SHOW("employees/show"),
     FW_EMP_NEW("employees/new"),
     FW_EMP_EDIT("employees/edit"),
-    FW_REP_INDEX("report/index"),
-    FW_REP_SHOW("report/show"),
-    FW_REP_NEW("report/new"),
-    FW_REP_EDIT("report/edit");
+    FW_REP_INDEX("reports/index"),
+    FW_REP_SHOW("reports/show"),
+    FW_REP_NEW("reports/new"),
+    FW_REP_EDIT("reports/edit");
     
     /*文字列*/
     private final String text;

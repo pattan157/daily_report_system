@@ -40,7 +40,7 @@ public enum AttributeConst {
     //日報管理
     REPORT("report"),
     REPORTS("reports"),
-    REP_COUNT("report_count"),
+    REP_COUNT("reports_count"),
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
