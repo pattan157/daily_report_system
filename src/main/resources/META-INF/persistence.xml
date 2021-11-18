@@ -3,6 +3,7 @@
 	<persistence-unit name="daily_report_system" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>models.Employee</class>
+		<class>models.Report</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_d2ed105b3421626?reconnect=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useUnicose=true&amp;characterEncoding=utf8&amp;cahracterSetResults=utf8"/>
