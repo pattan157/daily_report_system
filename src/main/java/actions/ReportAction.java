@@ -105,6 +105,13 @@ public class ReportAction extends ActionBase {
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
             
+            //身長・体重・BMIを非staticから呼び出すための変数作成
+            ReportView rvHeight = new ReportView();
+            ReportView rvWeight = new ReportView();
+            ReportView rvBmi = new ReportView();
+            
+            rvHeight.getHeight();
+           
             //パラメータの値をもとに日報情報のインスタンスを作成する
             ReportView rv = new ReportView(
                     null,
@@ -112,6 +119,9 @@ public class ReportAction extends ActionBase {
                     day,
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
+                    rvHeight.getHeight(),
+                    rvWeight.getWeight(),
+                    rvBmi.getBmi(),
                     null,
                     null);
             

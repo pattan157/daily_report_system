@@ -188,6 +188,7 @@ public abstract class ActionBase {
         return request.getParameter(key.getValue());
     }
     
+    
     /*
      * リクエストスコープにパラメータを設定する
      * @param key パラメータ名
