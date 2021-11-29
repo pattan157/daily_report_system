@@ -16,8 +16,16 @@
             <tbody>
             <tr>
                 <th>氏名</th>
+                <td><c:out value="${report.employee.name}" /></td>
+            </tr>
+             <tr>
+                <th>日付</th>
                 <fmt:parseDate value="${report.reportDate}" pattern="yyyy-MM-dd" var="reportDay" type="date" />
                 <td><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
+            </tr>
+            <tr>
+                <th>タイトル</th>
+                <td><pre><c:out value="${report.title}" /></pre></td>
             </tr>
             <tr>
                 <th>内容</th>
@@ -33,7 +41,7 @@
             </tr>
             <tr>
                 <th>BMI</th>
-                <td><pre><c:out value="${report.height} / (${report.weight} * ${report.weight})" /></pre></td>
+                <td><pre><fmt:formatNumber maxFractionDigits="1" value="${report.bmi()}"/></pre></td>
             </tr>
             <tr>
                 <th>登録日時</th>

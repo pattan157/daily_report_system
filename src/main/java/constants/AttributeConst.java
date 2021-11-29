@@ -55,12 +55,14 @@ public enum AttributeConst {
     private AttributeConst(final String text) {
         this.text = text;
         this.i = null;
+        
     }
     
     private AttributeConst(final Integer i) {
         this.text = null;
         this.i = i;
     }
+    
     
     public String getValue() {
         return this.text;
@@ -69,4 +71,5 @@ public enum AttributeConst {
     public Integer getIntegerValue() {
         return this.i;
     }
+    
 }

@@ -105,12 +105,9 @@ public class ReportAction extends ActionBase {
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
             
-            //身長・体重を非staticから呼び出すための変数作成
-            ReportView rvHeight = new ReportView();
-            ReportView rvWeight = new ReportView();
-            
-            
-            
+            //jspからうけとったパラメータをdoubleへ変換する（HTMLは全てstring型のため）
+            double hei = Double.parseDouble(getRequestParam(AttributeConst.REP_HEIGHT));
+            double wei = Double.parseDouble(getRequestParam(AttributeConst.REP_WEIGHT));
            
             //パラメータの値をもとに日報情報のインスタンスを作成する
             ReportView rv = new ReportView(
@@ -119,8 +116,8 @@ public class ReportAction extends ActionBase {
                     day,
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CONTENT),
-                    rvHeight.getHeight(),
-                    rvWeight.getWeight(),
+                    hei,
+                    wei,
                     null,
                     null);
             
@@ -214,10 +211,16 @@ public class ReportAction extends ActionBase {
             //idを条件に日報データを取得する
             ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
             
+            //setするHeight・weightをstring型に変換する
+            double hei = Double.parseDouble(getRequestParam(AttributeConst.REP_HEIGHT));
+            double wei = Double.parseDouble(getRequestParam(AttributeConst.REP_WEIGHT));
+            
             //入力された日報内容を設定する
             rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
             rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
             rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
+            rv.setHeight(hei);
+            rv.setWeight(wei);
             
             //日報データを更新する
             List<String> errors = service.update(rv);
