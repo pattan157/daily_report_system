@@ -73,10 +73,16 @@ public class ReportAction extends ActionBase {
     public void entryNew() throws ServletException, IOException {
         
         putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
+        //セッションからログイン中の従業員情報を取得 
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+        List<ReportView> r = service.getLastReport(ev);
+        ReportView rr = r.get(0);
         
         //日報情報の空インスタンスに、日報の日付＝今日の日付を設定する
         ReportView rv = new ReportView();
         rv.setReportDate(LocalDate.now());
+        rv.setHeight(rr.getHeight());
+        rv.setWeight(rr.getWeight());
         putRequestScope(AttributeConst.REPORT, rv); //日付のみ設定済みの日報インスタンス
         
         //新規登録画面を表示
