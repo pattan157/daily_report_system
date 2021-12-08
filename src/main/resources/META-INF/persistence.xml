@@ -6,14 +6,14 @@
         <class>models.Report</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="reppass"/>
+            <property name="javax.persistence.jdbc.password" value="1f244c88"/>
             <property name="javax.persistence.schema-generation.database.action" value="none"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="javax.persistence.schema-generation.scripts.action" value="none"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/daily_report_system?useSSL=false&amp;allowPublicKeyRetrieval=true"></property>
-            <property name="javax.persistence.jdbc.user" value="repuser"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-east-04.cleardb.com/heroku_d2ed105b3421626?reconnect=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"></property>
+            <property name="javax.persistence.jdbc.user" value="b2aea8d3ba4976"/>
         </properties>
     </persistence-unit>
 </persistence>
