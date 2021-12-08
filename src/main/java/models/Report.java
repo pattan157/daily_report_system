@@ -20,8 +20,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-/*
+
+/**
  * 日報データのDTOモデル
+ *
  */
 @Table(name = JpaConst.TABLE_REP)
 @NamedQueries({
@@ -36,7 +38,10 @@ import lombok.Setter;
             query = JpaConst.Q_REP_GET_ALL_MINE_DEF),
     @NamedQuery(
             name = JpaConst.Q_REP_COUNT_ALL_MINE,
-            query = JpaConst.Q_REP_COUNT_ALL_MINE_DEF)
+            query = JpaConst.Q_REP_COUNT_ALL_MINE_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_REP_GET_LAST_REPORT,
+            query = JpaConst.Q_REP_GET_LAST_REPORT_DEF)
 })
 
 @Getter //全てのクラスフィールドについてgetterを自動生成する(Lombok)
@@ -45,51 +50,63 @@ import lombok.Setter;
 @AllArgsConstructor //全てのクラスフィールドを引数にもつ引数ありコンストラクタを自動生成する(Lombok)
 @Entity
 public class Report {
-    
-    /*
-     * id 
+
+    /**
+     * id
      */
     @Id
     @Column(name = JpaConst.REP_COL_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    /*
-     * 日報登録した従業員
+
+    /**
+     * 日報を登録した従業員
      */
     @ManyToOne
     @JoinColumn(name = JpaConst.REP_COL_EMP, nullable = false)
     private Employee employee;
-    
-    /*
+
+    /**
      * いつの日報かを示す日付
      */
     @Column(name = JpaConst.REP_COL_REP_DATE, nullable = false)
     private LocalDate reportDate;
-    
-    /*
+
+    /**
      * 日報のタイトル
      */
-    @Column(name = JpaConst.REP_COL_TITLE, nullable = false)
+    @Column(name = JpaConst.REP_COL_TITLE, length = 255, nullable = false)
     private String title;
-    
-    /*
+
+    /**
      * 日報の内容
      */
     @Lob
     @Column(name = JpaConst.REP_COL_CONTENT, nullable = false)
-    private String content; 
+    private String content;
+
+    /*
+     * 身長
+     */
+    @Column(name = JpaConst.REP_COL_HEIGHT, nullable = true)
+    private double height;
     
     /*
+     * 体重
+     */
+    @Column(name = JpaConst.REP_COL_WEIGHT, nullable = true)
+    private double weight;
+    
+    /**
      * 登録日時
      */
     @Column(name = JpaConst.REP_COL_CREATED_AT, nullable = false)
     private LocalDateTime createdAt;
-    
-    /*
+
+    /**
      * 更新日時
      */
     @Column(name = JpaConst.REP_COL_UPDATED_AT, nullable = false)
     private LocalDateTime updatedAt;
-    
+
 }
