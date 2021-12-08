@@ -73,17 +73,27 @@ public class ReportAction extends ActionBase {
     public void entryNew() throws ServletException, IOException {
         
         putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
-        //セッションからログイン中の従業員情報を取得 
+        
+        //対象の日報があれば、現在日時・前回の身長・体重を引き継ぐ。なければ日付のみ引き継ぐ
+        ReportView rvrv = null;
+        //セッションからログイン中の従業員情報を取得
         EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
         List<ReportView> r = service.getLastReport(ev);
-        ReportView rr = r.get(0);
-        
-        //日報情報の空インスタンスに、日報の日付＝今日の日付を設定する
-        ReportView rv = new ReportView();
-        rv.setReportDate(LocalDate.now());
-        rv.setHeight(rr.getHeight());
-        rv.setWeight(rr.getWeight());
-        putRequestScope(AttributeConst.REPORT, rv); //日付のみ設定済みの日報インスタンス
+        boolean tf = r.isEmpty();
+        if(tf == true){
+            //日報が空の場合
+            rvrv = new ReportView();
+            rvrv.setReportDate(LocalDate.now());
+            putRequestScope(AttributeConst.REPORT, rvrv);//日付のみ設定ずみの日報インスタンス
+        }else {
+            ReportView rr = r.get(0);
+            //以前の日報がある場合
+            rvrv = new ReportView();
+            rvrv.setReportDate(LocalDate.now());
+            rvrv.setHeight(rr.getHeight());
+            rvrv.setWeight(rr.getWeight());
+            putRequestScope(AttributeConst.REPORT, rvrv); //日付・身長・体重が設定済みの日報インスタンス
+        }
         
         //新規登録画面を表示
         forward(ForwardConst.FW_REP_NEW);
