@@ -81,7 +81,7 @@ public class Report {
     /**
      * 日報の内容
      */
-    @Lob
+    /*@Lob 移行のためのコメントアウト*/
     @Column(name = JpaConst.REP_COL_CONTENT, nullable = false)
     private String content;
 

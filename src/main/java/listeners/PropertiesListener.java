@@ -26,7 +26,7 @@ public class PropertiesListener implements ServletContextListener {
     /**
      * Webアプリケーションの起動時に実行する処理
      */
-    public void contextInitialized(ServletContextEvent arg0) {
+    /*public void contextInitialized(ServletContextEvent arg0) {移行のためのコメントアウト
         ServletContext context = arg0.getServletContext();
 
         //プロパティファイルを読み込み、アプリケーションスコープに設定する
@@ -50,6 +50,6 @@ public class PropertiesListener implements ServletContextListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } 移行のためのコメントアウト*/
 
 }
